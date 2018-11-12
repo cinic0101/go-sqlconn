@@ -1,4 +1,4 @@
-package go_sqlconn
+package sqlconn
 
 import (
 	"io/ioutil"

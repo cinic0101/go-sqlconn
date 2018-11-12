@@ -1,0 +1,13 @@
+databases:
+  DB1:
+    driver: mysql
+    host: prod.mysql.com
+    database: db1
+    user: USER
+    password: PASSWORD
+  DB2:
+    driver: sqlserver
+    host: prod.sqlserver.com
+    database: db2
+    user: USER
+    password: PASSWORD

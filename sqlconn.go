@@ -47,6 +47,16 @@ func (d *DBConn) Query(query string, args ...interface{}) (*sql.Rows, error) {
 	return db.Query(query, args...)
 }
 
+func (d *DBConn) QueryRow(query string, args ...interface{}) *sql.Row {
+	db, err := sql.Open(d.Driver, d.DataSource)
+	if err != nil {
+		return nil
+	}
+	defer db.Close()
+
+	return db.QueryRow(query, args...)
+}
+
 func fmtDataSource(db Database) string {
 	switch db.Driver {
 	case "mysql":

@@ -37,6 +37,16 @@ func (d *Databases) NewInstance(db string) *DBConn {
 	return dbInstances[strings.ToLower(db)]
 }
 
+func (d *DBConn) Exec(query string, args ...interface{}) (sql.Result, error) {
+	db, err := sql.Open(d.Driver, d.DataSource)
+	if err != nil {
+		return nil, err
+	}
+	defer db.Close()
+
+	return db.Exec(query, args)
+}
+
 func (d *DBConn) Query(query string, args ...interface{}) (*sql.Rows, error) {
 	db, err := sql.Open(d.Driver, d.DataSource)
 	if err != nil {

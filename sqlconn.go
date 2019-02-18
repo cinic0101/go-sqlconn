@@ -43,13 +43,8 @@ func (d *DBConn) Exec(query string, args ...interface{}) (sql.Result, error) {
 		return nil, err
 	}
 	defer db.Close()
-
-	stmt, err := db.Prepare(query)
-	if err != nil {
-		return nil, err
-	}
-
-	return stmt.Exec(args)
+	
+	return db.Exec(query, args)
 }
 
 func (d *DBConn) Query(query string, args ...interface{}) (*sql.Rows, error) {
